@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../css/login.module.css';
 import music from "../audio/loginmusic.mp3"
-let audio = new Audio (music)
+import axios from "axios"
+let audio = new Audio(music)
+
 
 function App() {
     const [username, setUsername] = useState("");
@@ -9,19 +11,20 @@ function App() {
     useEffect(() => {
         audio.currentTime = 105;
         // audio.play();
-       
+
     }, []);
     useEffect(() => {
         // if(username) this.props.history.push("/chat")
-      },[username]);
-    
-      function handleSubmit(e) {
-          e.preventDefault();
-        console.log (username)
-      }
-      function handleChange(e) {
-          setUsername(e.target.value)
-      }
+    }, [username]);
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        axios.get('/api')
+            .then(res => console.log(res))
+    }
+    function handleChange(e) {
+        setUsername(e.target.value)
+    }
 
 
     return (
@@ -32,17 +35,13 @@ function App() {
             </div>
             <div className={styles.login__body}>
                 <div className={styles['login__body-container']}>
-                <form className={styles['login__body-from']} onSubmit={handleSubmit} >
-                    <input className={styles['login__body-input']}
-                        maxLength="12"
-                        placeholder="Chose you name"
-                        value = {username}
-                        onChange ={handleChange}
-                    />
-
-                </form>
-
-
+                    <form className={styles['login__body-from']} onSubmit={handleSubmit} >
+                        <input className={styles['login__body-input']}
+                            maxLength="12"
+                            placeholder="Chose you name"
+                            value={username}
+                            onChange={handleChange}/>
+                    </form>
                 </div>
             </div>
         </div>

@@ -1,1 +1,30 @@
-{"data":[]}
+{
+    "data": [
+        {
+            "room": {
+                "room1": {
+                    "user": {
+                        "id": 1,
+                        "name": "Jonas",
+                        "status": true
+                    },
+                    "message": {
+                        "username": "Jonas",
+                        "msg": "My name is Thrall!"
+                    }
+                },
+                "room2": {
+                    "user": {
+                        "id": 1,
+                        "name": "Trall",
+                        "status": true
+                    },
+                    "message": {
+                        "username": "Trall",
+                        "msg": "You are lying douchebag "
+                    }
+                }
+            }
+        }
+    ]
+}
