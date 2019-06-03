@@ -25,8 +25,6 @@ function App() {
     function handleChange(e) {
         setUsername(e.target.value)
     }
-
-
     return (
 
         <div className={styles.login__container}>
@@ -41,6 +39,7 @@ function App() {
                             placeholder="Chose you name"
                             value={username}
                             onChange={handleChange}/>
+                            <button class={styles['login__body-button']}>Enter</button>
                     </form>
                 </div>
             </div>
