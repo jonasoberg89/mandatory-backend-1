@@ -1,0 +1,65 @@
+.login__container {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("https://www.iamag.co/wp-content/uploads/2018/08/wow-old-soldier1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login__header{
+    height: 50vh;
+   
+}
+.login__body{
+    height: 50vh;
+    display: flex;
+    align-items: center;
+}
+.login__header-text{
+    color:#fff;
+    opacity: 0.7;
+    padding-top: 40px;
+    font-size: 100px;
+    margin:0;
+    font-family: 'UnifrakturCook', cursive;
+}
+.login__body-container{
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+}
+.login__body-from{
+    width:300px;
+    height: 70px;
+    position: relative;
+  }
+.login__body-input{
+    width: 95%;
+    opacity: 0.7;
+    height: 49px;
+    border-radius: 5px 4px 3px 4px;
+    border: 1px solid rgb(172, 172, 172);
+    position: relative;
+    font-size: 24px;
+    padding-left: 12px;
+    color:#EFBC00;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    outline: 0;
+    background: #0B131D;
+}
+.login__body-button{
+    margin-top: 29px;
+    background: #690101;
+    color: #EFBC00;
+    font-weight: 100;
+    font-size: 21px;
+    padding: 6px 100px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 10px;
+    border: 4px solid rgb(28, 28, 31);
+    text-decoration: none;
+    cursor: pointer;
+}
