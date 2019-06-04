@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../css/login.module.css';
-import music from "../audio/loginmusic.mp3"
+import music from "../audio/loginmusic.mp3";
+import {Redirect} from "react-router-dom";
 import axios from "axios"
 let audio = new Audio(music)
 
@@ -11,16 +12,13 @@ function App() {
     useEffect(() => {
         audio.currentTime = 105;
         // audio.play();
-
+        return () => {
+            audio.pause();
+        }
     }, []);
-    useEffect(() => {
-        // if(username) this.props.history.push("/chat")
-    }, [username]);
-
     function handleSubmit(e) {
         e.preventDefault();
-        axios.get('/api')
-            .then(res => console.log(res))
+        
     }
     function handleChange(e) {
         setUsername(e.target.value)
@@ -29,7 +27,7 @@ function App() {
 
         <div className={styles.login__container}>
             <div className={styles.login__header}>
-                <h1 className={styles['login__header-text']} >WarChat</h1>
+                <h1 className={styles['login__header-text']}>WarChat</h1>
             </div>
             <div className={styles.login__body}>
                 <div className={styles['login__body-container']}>
@@ -38,8 +36,8 @@ function App() {
                             maxLength="12"
                             placeholder="Chose you name"
                             value={username}
-                            onChange={handleChange}/>
-                            <button class={styles['login__body-button']}>Enter</button>
+                            onChange={handleChange} />
+                        <button className={styles['login__body-button']}>Enter</button>
                     </form>
                 </div>
             </div>
