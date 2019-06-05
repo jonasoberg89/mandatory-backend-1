@@ -1,13 +1,13 @@
 {
     "data": [
         {
-            "room": {
+            "user": {
+                "id": 1,
+                "name": "Jonas",
+                "status": true
+            },
+            "rooms": {
                 "room1": {
-                    "user": {
-                        "id": 1,
-                        "name": "Jonas",
-                        "status": true
-                    },
                     "message": {
                         "username": "Jonas",
                         "msg": "My name is Thrall!"
