@@ -25,4 +25,10 @@ app.post('/user',(req, res) => {
    
 })
 const port = 5000;
-app.listen(port,() => console.log(`Server started on port ${port}`));
+const server = app.listen(port,() => console.log(`Server started on port ${port}`));
+
+const io = socket(server);
+
+io.on("connection",function(socket){
+    console.log("made connection")
+});
