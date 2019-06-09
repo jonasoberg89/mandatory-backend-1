@@ -31,12 +31,19 @@
 .chat__navbar{
     height: 80vh;
     width: 20vw;
+    background: black;
+    opacity: 0.8;
+}
+.chat__navbar__header{
+    height: 10vh;
+    width: 20vw;
+    border-bottom: 1px groove #fff;
+}
+.chat__navbar__text{
+    color:#fff;
+    cursor: pointer;
 }
 .chat__container{
-    background-image: url("https://i.pinimg.com/originals/dc/ef/f6/dceff6eb8639f46f68f25c36125bdbeb.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     position: relative;
     border-radius: 6%;
     opacity: 0.8;
