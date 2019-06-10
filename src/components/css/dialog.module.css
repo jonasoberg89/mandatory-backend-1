@@ -10,7 +10,10 @@
 }
 .Dialog{
     z-index: 1000;
-    background: #fff;
+    background-image: url("https://i.pinimg.com/originals/dc/ef/f6/dceff6eb8639f46f68f25c36125bdbeb.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 30vw;
     height: 45vh;
     position: absolute;
@@ -58,9 +61,9 @@
         height: 10vh;
 }
 .Dialog__content-text{
-    font-size: 14px;
+    font-size: 16px;
     margin-left: 12px;
-    color:#D2D5D9;
+    color:black;;
     font-weight: bold;
 }
 .Dialog__content-input{

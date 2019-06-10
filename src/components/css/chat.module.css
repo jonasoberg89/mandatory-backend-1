@@ -43,6 +43,12 @@
     color:#fff;
     cursor: pointer;
 }
+.chat__navbar--room--name{
+    color:#fff;
+    font-size: 25px;
+    font-family: 'UnifrakturCook', cursive;
+    cursor: pointer;
+}
 .chat__container{
     position: relative;
     border-radius: 6%;
@@ -54,6 +60,14 @@
     height: 100vh;
     width: 20vw;
 }
+.chat__navbar--room{
+    display: flex;
+
+}
+.chat__navbar--box{
+    width: 20vw;
+    align-self: center;
+}
 .chat__users--image{
     width: 100%;
     height: 60vh;
@@ -61,4 +75,10 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.chat__navbar__icon{
+    font-size: 16px;
+    color:#fff;
+    cursor: pointer;
 }

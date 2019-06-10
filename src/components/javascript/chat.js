@@ -12,17 +12,44 @@ const socket = openSocket('http://localhost:5000');
 
 function Chat(props) {
     const [username, setUsername] = useState("");
-    const [newRoom,setNewRoom] = useState(false);
-    const {room,setRoom} = useState("");
+    const [newRoom, setNewRoom] = useState(false);
+    const [renderRoom, setRenderRoom] = useState("");
+    const [rooms, setRooms] = useState([]);
 
     useEffect(() => {
         setUsername(props.location.state.username)
         audio.currentTime = 26;
         // audio.play();
+        axios.get("/api")
+            .then(res => {
+                let data = res.data.data;
+                setRooms(data)
+            })
+            .catch(err => {
+                console.log(err);
+            })
         return () => {
             audio.pause();
         }
-    },[]);
+    }, [rooms]);
+    useEffect(() => {
+
+    }, [rooms]);
+    function getRoom(id) {
+        setRenderRoom(id)
+        console.log(id);
+
+    }
+    function deleteRoom(id) {
+        console.log(id);
+        axios.delete(`/delete/${id}`)
+        .then(res =>{
+            console.log(res);
+        })
+        .catch(err =>{
+            console.log(err);
+        })
+    }
     return (
 
         <div className={styles.chat}>
@@ -37,13 +64,28 @@ function Chat(props) {
             <div className={styles.chat__board}>
                 <div className={styles.chat__navbar}>
                     <div className={styles["chat__navbar__header"]}>
-                        <h3 onClick={()=>{setNewRoom(!newRoom)}} className={styles["chat__navbar__text"]}>Create Room</h3>
+                        <h3 onClick={() => { setNewRoom(!newRoom) }} className={styles["chat__navbar__text"]}>Create Room</h3>
                     </div>
                     <div className={styles["chat__navbar__rooms"]}>
-                        <div>Create Room</div>
+                    {
+                            rooms.map(room => {
+                                return (
+                                    <div className={styles["chat__navbar--room"]} key={room.id}>
+                                        <div className={styles["chat__navbar--box"]}>
+                                            <span onClick={() => { getRoom(room.id) }} className={styles["chat__navbar--room--name"]}>{room.roomName}</span>
+                                        </div>
+                                        <div className={styles["chat__navbar--box"]}>
+                                            <span><i onClick= {()=>{deleteRoom(room.id)}} className={`material-icons ${styles['chat__navbar__icon']}`}>close</i></span>
+                                        </div>
+
+                                    </div>
+                                )
+                            }
+                            )
+                        }
                     </div>
                 </div>
-                <Chatboard />
+                <Chatboard renderRoom={renderRoom} />
             </div>
         </div>
 

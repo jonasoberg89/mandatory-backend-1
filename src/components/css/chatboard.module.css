@@ -1,11 +1,7 @@
 .chat__container{
-    background-image: url("https://i.pinimg.com/originals/dc/ef/f6/dceff6eb8639f46f68f25c36125bdbeb.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: black;
+
     position: relative;
-    border-radius: 6%;
-    opacity: 0.8;
     height: 80vh;
     width: 60vw;
 }
@@ -14,9 +10,58 @@
     border: 1px solid black;
     height: 72vh;
 }
+.chat__board--header{
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+}
+.chat__board--text{
+    color:#fff;
+    margin: 0;
+    font-size: 50px;
+    font-family: 'UnifrakturCook', cursive;
+}
 .chat__board--users{
-    height: 63vh;
-    border: 1px solid red;
+    height: 50vh;
+    background: rgb(31, 30, 30);
     width: 100%;
     overflow-y: scroll;
+}
+.chat__board--user{
+    width: 90%;
+    height: 20px;
+    display: flex;
+    margin-top: 15px;
+    margin-left: 20px;
+
+}
+.chat__board--user p{
+    color:#fff;
+    margin: 0;
+}
+.chat__board--message{
+    margin-top: 30px;
+    width: 100%;
+}
+.chat__board--input{
+    padding: 10px 20px;
+    box-sizing: border-box;
+    color: #fff;
+    border: 0;
+    display: block;
+    width: 100%;
+    background: #eee;
+    border-bottom: 1px solid #eee;
+    font-family: 'UnifrakturCook', cursive;
+    font-size: 18px;
+}
+.chat__board--button{
+    background: rgb(117, 18, 18);
+    opacity: 0.8;
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 0 0 2px 2px;
 }

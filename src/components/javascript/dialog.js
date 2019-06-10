@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import styles from '../css/dialog.module.css';
-
+import axios from "axios";
 
 const Dialog = (props) => {
-  const [folderName, setFolderName] = useState("");
+  const [roomName, setRoomName] = useState("");
 
   function handleFolderName(e) {
-    setFolderName(e.target.value);
+    setRoomName(e.target.value);
   }
 
-  function handleNewFolder() {
-
+  function handleNewRoom() {
+    axios.post("/newroom",{roomName})
+    .then(res =>{
+      console.log(res);
+      props.exitDialog();
+    })
   };
 
   return (
@@ -25,11 +29,11 @@ const Dialog = (props) => {
         </div>
         <div className={styles.Dialog__content}>
           <span className={styles['Dialog__content-text']} >Give this Room a name</span>
-          <input onChange={handleFolderName} value={folderName} type="text" className={styles['Dialog__content-input']} placeholder="Folder Name..." />
+          <input onChange={handleFolderName} value={roomName} type="text" className={styles['Dialog__content-input']} placeholder="Folder Name..." />
         </div>
         <div className={styles.Dialog__footer}>
           <button onClick={props.exitDialog} className={styles['Dialog__footer-cancel']}>Cancel</button>
-          <button onClick={handleNewFolder} className={styles['Dialog__footer-create']}>Create</button>
+          <button onClick={handleNewRoom} className={styles['Dialog__footer-create']}>Create</button>
         </div>
       </div>
     </div>
