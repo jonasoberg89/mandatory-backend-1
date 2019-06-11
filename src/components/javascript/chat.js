@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../css/chat.module.css';
-import music from "../audio/chatmusic.mp3";
 import Chatboard from "./chatboard"
 import Dialog from "./dialog"
 import axios from "axios"
 import openSocket from 'socket.io-client';
-let audio = new Audio(music)
 const socket = openSocket('http://localhost:5000');
-
 
 function Chat(props) {
     const [username, setUsername] = useState("");
@@ -20,13 +17,6 @@ function Chat(props) {
     socket.on("new message", function(data){
         setNewMsg(data);
     })
-    useEffect(() => {
-        audio.currentTime = 34;
-        audio.play();
-        return () => {
-            audio.pause();
-        }
-    }, [])
 
     useEffect(()=>{
         socket.emit("new user", username)
@@ -50,8 +40,6 @@ function Chat(props) {
     }, [rooms]);
     function getRoom(id) {
         setRenderRoom(id)
-        console.log(id);
-
     }
     function deleteRoom(id) {
         axios.delete(`/delete/${id}`)
