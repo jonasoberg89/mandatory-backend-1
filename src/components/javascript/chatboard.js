@@ -4,32 +4,46 @@ import axios from "axios"
 
 
 function Chat(props) {
-    const [username, setUsername] = useState("");
     const [room, setRoom] = useState([]);
     const [messages, setMessages] = useState([]);
+    const [sendMessage, setSendMessage] = useState("");
 
     useEffect(() => {
         axios.get("/room/1")
             .then(res => {
-                setRoom([res.data][0].roomName);
+                console.log(res);
+                setRoom([res.data.roomName]);
                 setMessages(res.data.messages);
             })
             .catch(err => {
                 console.log(err)
             })
-    }, []);
+    }, [props.newMsg]);
 
     useEffect(() => {
         if(!props.renderRoom)return
         axios.get(`/room/${props.renderRoom}`)
             .then(res => {
-                setRoom([res.data][0].roomName);
+                setRoom([res.data.roomName]);
                 setMessages(res.data.messages)
             })
             .catch(err => {
                 console.log(err)
             })
-    }, [props.renderRoom]);
+    }, [props.renderRoom,props.newMsg]);
+
+    function handleMessage(e) {
+        let socket = props.socket
+        e.preventDefault();
+        if (sendMessage.length > 1 && sendMessage.length < 200) {
+        socket.emit("send message",{
+            username:props.username,
+            msg:sendMessage,
+            room:room.join(" "),
+        })
+        setSendMessage("");
+    }
+    }
 
     return (
 
@@ -50,8 +64,8 @@ function Chat(props) {
                     }
                 </div>
                 <div className={styles["chat__board--message"]}>
-                    <form action="">
-                        <input className={styles["chat__board--input"]} type="text" />
+                    <form onSubmit = {handleMessage}>
+                        <input value={sendMessage} onChange={(e)=>{setSendMessage(e.target.value)}} className={styles["chat__board--input"]} type="text" />
                         <button className={styles["chat__board--button"]}>Send</button>
                     </form>
                 </div>

@@ -1,13 +1,12 @@
 .chat__container{
-    background: black;
-
+    background: rgb(15, 15, 15);
+    opacity: 0.9;
     position: relative;
     height: 80vh;
     width: 60vw;
 }
 .chat__board {
     margin: 30px;
-    border: 1px solid black;
     height: 72vh;
 }
 .chat__board--header{
@@ -46,7 +45,7 @@
 .chat__board--input{
     padding: 10px 20px;
     box-sizing: border-box;
-    color: #fff;
+    color: black;
     border: 0;
     display: block;
     width: 100%;
@@ -56,7 +55,7 @@
     font-size: 18px;
 }
 .chat__board--button{
-    background: rgb(117, 18, 18);
+    background: rgb(46, 45, 45);
     opacity: 0.8;
     color: #fff;
     font-size: 18px;

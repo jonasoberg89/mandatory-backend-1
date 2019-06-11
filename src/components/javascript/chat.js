@@ -3,7 +3,6 @@ import styles from '../css/chat.module.css';
 import music from "../audio/chatmusic.mp3";
 import Chatboard from "./chatboard"
 import Dialog from "./dialog"
-import Redirect from "react-router-dom";
 import axios from "axios"
 import openSocket from 'socket.io-client';
 let audio = new Audio(music)
@@ -15,11 +14,30 @@ function Chat(props) {
     const [newRoom, setNewRoom] = useState(false);
     const [renderRoom, setRenderRoom] = useState("");
     const [rooms, setRooms] = useState([]);
+    const [newMsg, setNewMsg] = useState("");
+    const[users,setUsers] = useState ([]);
+
+    socket.on("new message", function(data){
+        setNewMsg(data);
+    })
+    useEffect(() => {
+        audio.currentTime = 34;
+        audio.play();
+        return () => {
+            audio.pause();
+        }
+    }, [])
+
+    useEffect(()=>{
+        socket.emit("new user", username)
+        socket.on("get users", function(data){
+            setUsers(data);
+        })
+    },[username])
 
     useEffect(() => {
         setUsername(props.location.state.username)
-        audio.currentTime = 26;
-        // audio.play();
+      
         axios.get("/api")
             .then(res => {
                 let data = res.data.data;
@@ -28,12 +46,7 @@ function Chat(props) {
             .catch(err => {
                 console.log(err);
             })
-        return () => {
-            audio.pause();
-        }
-    }, [rooms]);
-    useEffect(() => {
-
+    
     }, [rooms]);
     function getRoom(id) {
         setRenderRoom(id)
@@ -41,7 +54,6 @@ function Chat(props) {
 
     }
     function deleteRoom(id) {
-        console.log(id);
         axios.delete(`/delete/${id}`)
         .then(res =>{
             console.log(res);
@@ -60,6 +72,19 @@ function Chat(props) {
             </div>
             <div className={styles.chat__users}>
                 <div className={styles["chat__users--image"]}></div>
+                <h2 className={styles["chat__users--header"]} >Online Users</h2>
+                <div>
+                {
+                        users.map(user =>{
+                            return(
+                                <div ke={user}>
+                                <span className={styles["chat__users--user"]} >{user}</span>
+                                </div>
+                            )
+                        })
+                    }
+                 
+                </div>
             </div>
             <div className={styles.chat__board}>
                 <div className={styles.chat__navbar}>
@@ -85,7 +110,7 @@ function Chat(props) {
                         }
                     </div>
                 </div>
-                <Chatboard renderRoom={renderRoom} />
+                <Chatboard newMsg={newMsg} username={username} socket={socket} renderRoom={renderRoom} />
             </div>
         </div>
 

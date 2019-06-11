@@ -3,10 +3,7 @@
     flex-wrap: wrap;
     height: 100vh;
     width: 100vw;
-    background-image: url("http://i.imgur.com/9uDHO.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: black;
 }
 
 .chat__header {
@@ -31,7 +28,7 @@
 .chat__navbar{
     height: 80vh;
     width: 20vw;
-    background: black;
+    background: rgb(15, 15, 15);
     opacity: 0.8;
 }
 .chat__navbar__header{
@@ -59,6 +56,8 @@
 .chat__users{
     height: 100vh;
     width: 20vw;
+    background: rgb(15, 15, 15);
+    opacity: 0.8;
 }
 .chat__navbar--room{
     display: flex;
@@ -70,15 +69,20 @@
 }
 .chat__users--image{
     width: 100%;
-    height: 60vh;
-    background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/43052cc7-ac22-408b-a709-da4141374abe/d7aba1i-f90c44cc-98bc-4b3d-8ebe-4f1336f7310d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQzMDUyY2M3LWFjMjItNDA4Yi1hNzA5LWRhNDE0MTM3NGFiZVwvZDdhYmExaS1mOTBjNDRjYy05OGJjLTRiM2QtOGViZS00ZjEzMzZmNzMxMGQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.8T6Nv8mG6Bm6RtfJEZaG-6ahIE9sCKgvZE6g2S3lexM");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 30vh;
+    border-bottom: 1px groove #fff;
+   
 }
 
 .chat__navbar__icon{
     font-size: 16px;
     color:#fff;
     cursor: pointer;
+}
+.chat__users--header{
+    color:#fff;
+
+}
+.chat__users--user{
+    color:#fff;
 }
