@@ -8,6 +8,7 @@ const socket = openSocket('http://localhost:5000');
 
 function Chat(props) {
     const [username, setUsername] = useState("");
+    const [toogle,setToggle] = useState(false);
     const [newRoom, setNewRoom] = useState(false);
     const [renderRoom, setRenderRoom] = useState("");
     const [rooms, setRooms] = useState([]);
@@ -16,9 +17,11 @@ function Chat(props) {
 
     socket.on("new message", function(data){
         setNewMsg(data);
+        console.log(users)
     })
 
     useEffect(()=>{
+        if(username === "")return;
         socket.emit("new user", username)
         socket.on("get users", function(data){
             setUsers(data);
@@ -37,14 +40,21 @@ function Chat(props) {
                 console.log(err);
             })
     
-    }, [rooms]);
+    }, [newRoom, toogle]);
+
+    function roomId() {
+        return parseInt(Date.now() + Math.random());
+    }
+
     function getRoom(id) {
         setRenderRoom(id)
     }
+
     function deleteRoom(id) {
         axios.delete(`/delete/${id}`)
         .then(res =>{
             console.log(res);
+            setToggle(!toogle);
         })
         .catch(err =>{
             console.log(err);
@@ -65,7 +75,7 @@ function Chat(props) {
                 {
                         users.map(user =>{
                             return(
-                                <div ke={user}>
+                                <div key={roomId()}>
                                 <span className={styles["chat__users--user"]} >{user}</span>
                                 </div>
                             )

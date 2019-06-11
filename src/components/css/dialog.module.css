@@ -37,14 +37,10 @@
     display: flex;
     justify-content: flex-end;
 }
-.Dialog__header-icon{
-    margin-left: 20px;
-    font-size: 40px;
-    color: #E91E63;
-}
 .Dialog__header-text{
-    font-size: 16px;
+    font-size: 20px;
     margin-left: 15px;
+    font-family: 'UnifrakturCook', cursive;
 }
 .Dialog__header-close{
     margin-top: 10px;
@@ -57,21 +53,23 @@
 }
 .Dialog__content{
     margin-top: 40px;
-        width: 100%;
-        height: 10vh;
+    width: 100%;
+    height: 10vh;
 }
 .Dialog__content-text{
-    font-size: 16px;
+    font-size: 30px;
     margin-left: 12px;
     color:black;;
     font-weight: bold;
+    font-family: 'UnifrakturCook', cursive;
 }
 .Dialog__content-input{
     margin-top: 10px;
     height: 32px;
     padding: 0 8px;
-    color: #1b2733;
+    color: #fff;
     border: 1px solid #c1c7cd;
+    background: black;
     border-radius: 4px;
     width: 91%;
     font-size: 16px;
@@ -85,20 +83,13 @@
     align-items: flex-end;
 }
 .Dialog__footer-create{
-    height: 32px;
+    background:none;
+    border:none;
     font-weight: 500;
-    border-radius: 4px;
-    opacity: 0.9;
-    background: #0B131D;
-    color: #fff;
     border: none;
-    padding: 0px 23px;
     line-height: 1;
-    font-size: 14px;
-    display: inline-block;
-    text-align: center;
-    overflow: visible;
-    text-decoration: none;
+    font-size: 25px;
+    font-family: 'UnifrakturCook', cursive;
     cursor: pointer;
 }
 .Dialog__footer-create:hover{
@@ -106,22 +97,15 @@
 }
 
 .Dialog__footer-cancel{
-    height: 32px;
+    background:none;
+    border:none;
     font-weight: 500;
-    border-radius: 4px;
-    background: #fff;
+    font-family: 'UnifrakturCook', cursive;
     border: 1px solid #bbb;
-    color: #47525d;
-    padding: 0px 23px;
     line-height: 1;
-    font-size: 14px;
+    font-size: 25px;
     display: inline-block;
     text-align: center;
-    overflow: visible;
-    text-decoration: none;
     margin-right: 18px;
     cursor: pointer;
-}
-.Dialog__footer-cancel:hover{
-    background: #FAFAFA;
 }

@@ -11,7 +11,6 @@ function roomId() {
     return parseInt(Date.now() + Math.random());
 }
 
-
 app.use(express.json());
 
 app.get('/api', (req, res) => {
@@ -36,6 +35,12 @@ app.post("/newroom", (req, res) => {
     let name = req.body.roomName
     if (!name) {
         res.status(404);
+        res.end();
+        return;
+    }
+    let checkRoom = dataJson.data.find((room) => room.roomName.toLowerCase() === name.toLowerCase())
+    if(checkRoom){
+        res.status(400);
         res.end();
         return;
     }

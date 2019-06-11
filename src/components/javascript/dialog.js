@@ -15,6 +15,9 @@ const Dialog = (props) => {
       console.log(res);
       props.exitDialog();
     })
+    .catch(err =>{
+      console.log("tjenare")
+    })
   };
 
   return (
